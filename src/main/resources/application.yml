@@ -1,0 +1,67 @@
+server:
+  port: 0
+spring:
+  application:
+    name: sse-alarm-service
+#  config:
+#    import: "optional:configserver:http://localhost:8888"
+  cloud:
+    config:
+      name: sse-alarm-service
+      profiles:
+        active: default
+  redis:
+    host: 127.0.0.1
+    port: 6380
+#  datasource:
+#    url: jdbc:mariadb://localhost:3306/RtAlarmDB
+#    username: root
+#    password: 1234
+#    driver-class-name: org.mariadb.jdbc.Driver
+#  rabbitmq:
+#    host: 127.0.0.1
+#    port: 5672
+#    username: guest
+#    password: guest
+#  jpa:
+#    hibernate:
+#      ddl-auto: create
+#    properties:
+#      hibernate:
+#        show_sql: true
+#        format_sql: true
+
+eureka:
+  instance:
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://127.0.0.1:8761/eureka
+
+logging:
+  level:
+    com.example.usermicroservice.client: DEBUG
+    com:
+      amazonaws:
+        util:
+          EC2MetadataUtils: ERROR
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh, health, beans, busrefresh, busenv
+
+jwt:
+  secret: THIS_IS_OUR_SECRET
+  admin_secret: THIS_IS_OUR_ADMIN_SECRET
+  access_expired_time: 604800000 # 604800000 = 60000*60*24*7 == 1?? (1? * 60 * 24 * 7)
+  refresh_expired_time: 1209600000 # 604800000*2
+  auth_header: Authorization
+  token_type: Bearer
+  access_name: access_token
+  refresh_name: refresh_token
+  redis_rt: -rt
+  redis_at: -at
