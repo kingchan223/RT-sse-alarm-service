@@ -18,26 +18,30 @@ dependencies {
     // JWT
     implementation 'io.jsonwebtoken:jjwt:0.9.1'
     // DATA JPA
-//    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     // EUREKA
     implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
     // ACTUATOR
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'org.projectlombok:lombok:1.18.20'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     //feignClient
     compileOnly 'org.springframework.cloud:spring-cloud-starter-openfeign'
     // REDIS
-    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
     implementation 'org.springframework.boot:spring-boot-starter-web'
-//    testImplementation 'org.springframework.boot:spring-boot-starter-test'
     // MARIA DB
-//    runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
+    runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
     // LOMBOK
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
 
+    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+    //스프링 캐시
+    implementation 'org.springframework.boot:spring-boot-starter-cache'
 
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.12.3'
 }
