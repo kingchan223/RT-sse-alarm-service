@@ -4,9 +4,6 @@ import com.example.ssealarmservice.model.entity.Alarm;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-
 @NoArgsConstructor
 @Data
 public class AlarmResponse {

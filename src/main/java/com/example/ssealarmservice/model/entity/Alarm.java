@@ -16,4 +16,12 @@ public class Alarm {
     private String senderId;
     private String receiverId;
     private String content;
+
+    public static Alarm create(String senderId, String receiverId, String content){
+        Alarm alarm = new Alarm();
+        alarm.senderId = senderId;
+        alarm.receiverId = receiverId;
+        alarm.content = content;
+        return alarm;
+    }
 }

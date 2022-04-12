@@ -1,9 +1,7 @@
 package com.example.ssealarmservice.model;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
-import lombok.ToString;
 
 @AllArgsConstructor
 @Getter

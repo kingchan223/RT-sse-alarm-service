@@ -19,13 +19,13 @@ public class CacheService {
     private static final MySseEmitter EMPTY_MY_SSEEMITTER = new MySseEmitter();
 
     @Cacheable(cacheNames = "mySseEmitterStore", key = "#key")
-    public MySseEmitter getMySseEmitter(final String key) {
+    public MySseEmitter getMySseEmitter(final String key){
         log.info("해당 key : {} 에 알맞는 캐싱 데이터가 없습니다.", key);
         return EMPTY_MY_SSEEMITTER;
     }
 
     @CachePut(cacheNames = "mySseEmitterStore", key = "#key")
-    public MySseEmitter updateMySseEmitter(final String key, final SseEmitter sseEmitter) {
+    public MySseEmitter updateMySseEmitter(final String key, final SseEmitter sseEmitter){
         log.info("해당 key : {} 에 대한 데이터가 업데이트 되었습니다.", key);
         MySseEmitter mySseEmitter = new MySseEmitter();
         mySseEmitter.setSseEmitter(sseEmitter);
@@ -44,6 +44,5 @@ public class CacheService {
                 (!ObjectUtils.isEmpty(mySseEmitter.getSseEmitter())) &&
                 (!ObjectUtils.isEmpty(mySseEmitter.getExpiryDate())) &&
                 (mySseEmitter.getExpiryDate().isAfter(LocalDateTime.now()));
-
     }
 }

@@ -11,62 +11,62 @@ import javax.servlet.http.HttpServletRequest;
 import java.time.Duration;
 import java.util.Objects;
 
-@RequiredArgsConstructor
-@Service
+//@RequiredArgsConstructor
+//@Service
 public class RedisService {
-
-    private final RedisTemplate redisTemplate;
-    private final Environment env;
-    private final Long emmiter_duration_day = 7L;
-    private final Long event_redis_duration_day = 14L;
-
-    public void setEmitter(String key, SseEmitter emitter){
-        ValueOperations<String, SseEmitter> values = redisTemplate.opsForValue();
-        values.set(key, emitter, Duration.ofDays(emmiter_duration_day));
-    }
-
-    public void setEvent(String key, String event){
-        ValueOperations<String, String> values = redisTemplate.opsForValue();
-        values.set(key, event, Duration.ofDays(event_redis_duration_day));
-    }
-
-//    public String setAdminAccessJwtToken(String email, String nickname, String role){
-//        String accessToken = tokenUtils.createAdminAccessJwtToken(email, nickname, role);
-//        ValueOperations<String, String> values = redisTemplate.opsForValue();
-//        values.set(email+env.getProperty("jwt.redis_rt"), accessToken, Duration.ofMinutes(20));
-//        return accessToken;
+//
+//    private final RedisTemplate redisTemplate;
+//    private final Environment env;
+//    private final Long emmiter_duration_day = 7L;
+//    private final Long event_redis_duration_day = 14L;
+//
+//    public void setEmitter(String key, SseEmitter emitter){
+//        ValueOperations<String, SseEmitter> values = redisTemplate.opsForValue();
+//        values.set(key, emitter, Duration.ofDays(emmiter_duration_day));
 //    }
-
-//    public String setRefreshJwtToken(String email, String nickname, String role){
-//        String refreshToken = tokenUtils.createRefreshJwtToken(email, nickname, role);
+//
+//    public void setEvent(String key, String event){
 //        ValueOperations<String, String> values = redisTemplate.opsForValue();
-//        values.set(email+env.getProperty("jwt.redis_rt"), refreshToken, Duration.ofDays(refresh_redis_duration_day));
-//        return refreshToken;
+//        values.set(key, event, Duration.ofDays(event_redis_duration_day));
 //    }
-
-//    public String setAdminRefreshJwtToken(String email, String nickname, String role){
-//        String refreshToken = tokenUtils.createAdminRefreshJwtToken(email, nickname, role);
+//
+////    public String setAdminAccessJwtToken(String email, String nickname, String role){
+////        String accessToken = tokenUtils.createAdminAccessJwtToken(email, nickname, role);
+////        ValueOperations<String, String> values = redisTemplate.opsForValue();
+////        values.set(email+env.getProperty("jwt.redis_rt"), accessToken, Duration.ofMinutes(20));
+////        return accessToken;
+////    }
+//
+////    public String setRefreshJwtToken(String email, String nickname, String role){
+////        String refreshToken = tokenUtils.createRefreshJwtToken(email, nickname, role);
+////        ValueOperations<String, String> values = redisTemplate.opsForValue();
+////        values.set(email+env.getProperty("jwt.redis_rt"), refreshToken, Duration.ofDays(refresh_redis_duration_day));
+////        return refreshToken;
+////    }
+//
+////    public String setAdminRefreshJwtToken(String email, String nickname, String role){
+////        String refreshToken = tokenUtils.createAdminRefreshJwtToken(email, nickname, role);
+////        ValueOperations<String, String> values = redisTemplate.opsForValue();
+////        values.set(email+env.getProperty("jwt.redis_rt"), refreshToken, Duration.ofDays(14));
+////        return refreshToken;
+////    }
+//
+//
+//    private String getJwtToken(String email){
 //        ValueOperations<String, String> values = redisTemplate.opsForValue();
-//        values.set(email+env.getProperty("jwt.redis_rt"), refreshToken, Duration.ofDays(14));
-//        return refreshToken;
+//        return values.get(email);
 //    }
-
-
-    private String getJwtToken(String email){
-        ValueOperations<String, String> values = redisTemplate.opsForValue();
-        return values.get(email);
-    }
-
-    private void deleteEmitterByKey(String key){
-        redisTemplate.delete(key);
-    }
-
-    private void deleteEventByKey(String key){
-        redisTemplate.delete(key);
-    }
-
-    public SseEmitter getEmitterById(String key) {
-        ValueOperations<String, SseEmitter> values = redisTemplate.opsForValue();
-        return values.get(key);
-    }
+//
+//    private void deleteEmitterByKey(String key){
+//        redisTemplate.delete(key);
+//    }
+//
+//    private void deleteEventByKey(String key){
+//        redisTemplate.delete(key);
+//    }
+//
+//    public SseEmitter getEmitterById(String key) {
+//        ValueOperations<String, SseEmitter> values = redisTemplate.opsForValue();
+//        return values.get(key);
+//    }
 }
