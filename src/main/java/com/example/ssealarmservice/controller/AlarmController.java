@@ -8,7 +8,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
-import javax.ws.rs.DELETE;
 import java.util.List;
 
 // TODO 메시지, dingsta 좋아요, secondTrade 관심있어요,

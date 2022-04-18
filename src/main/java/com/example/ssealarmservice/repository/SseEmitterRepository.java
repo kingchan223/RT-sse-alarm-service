@@ -1,13 +1,13 @@
 package com.example.ssealarmservice.repository;
 
-import com.example.ssealarmservice.model.MySseEmitter;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.ObjectUtils;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
 import java.util.concurrent.ConcurrentHashMap;
 
-@Repository
+@Component
 public class SseEmitterRepository {
     private final SseEmitter EMPTY_SSE_EMITTER;
     private final ConcurrentHashMap<String, SseEmitter> concurrentHashMap;
@@ -18,7 +18,8 @@ public class SseEmitterRepository {
     }
 
     public SseEmitter save(String key, SseEmitter mySseEmitter){
-        if(ObjectUtils.isEmpty(concurrentHashMap.get(key))) concurrentHashMap.put(key, mySseEmitter);
+        if(ObjectUtils.isEmpty(concurrentHashMap.get(key)))
+            concurrentHashMap.put(key, mySseEmitter);
         return mySseEmitter;
     }
 

@@ -58,11 +58,11 @@ public class AlarmService {
         System.out.println("구독중....{"+nickname+"}");
         SseEmitter sseEmitter = new SseEmitter(DEFAULT_TIMEOUT);
         sendToClient(sseEmitter,dummyNoti);// 503 에러를 방지하기 위한 더미 이벤트 전송
-        sseEmitterRepository.save(nickname, sseEmitter);
-        return sseEmitter;
+        return sseEmitterRepository.save(nickname, sseEmitter);
     }
 
     private void sendToClient(SseEmitter emitter, Notification notification){
+        System.out.println(notification.getReceiverId());
         try{
             emitter.send(SseEmitter.event()
                     .id(notification.getReceiverId())
